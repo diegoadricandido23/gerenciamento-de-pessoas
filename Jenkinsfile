@@ -3,8 +3,9 @@ pipeline {
     agent none
     stages {
         stage('build') {
-            agent {
-                docker { image 'maven' }
+            docker {
+               dockerfile true
+               label 'docker'
             }
             steps {
             	echo "Build Application"
