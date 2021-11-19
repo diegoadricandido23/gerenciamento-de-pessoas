@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('build') {
             agent {
-                docker {
-                    dockerfile true
-                    label 'docker'
-                }
+               docker { image 'node:14-alpine' }
             }
             steps {
             	echo "Build Application"
