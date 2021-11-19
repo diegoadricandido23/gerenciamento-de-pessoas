@@ -1,9 +1,8 @@
 #!/usr/bin/env groovy
 pipeline {
     agent {
-       docker { image 'node:14-alpine' }
+       docker { image 'maven:3.8.1-adoptopenjdk-11' }
     }
-    steps {
     stages {
         stage('build') {
             	echo "Build Application"
@@ -11,9 +10,6 @@ pipeline {
             }
         }
         stage('test') {
-            agent {
-                docker { image 'maven' }
-            }
             steps {
             	echo "Run Test Application"
                 sh 'mvn test'
