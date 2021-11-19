@@ -1,12 +1,11 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent none
+    agent {
+       docker { image 'node:14-alpine' }
+    }
+    steps {
     stages {
         stage('build') {
-            agent {
-               docker { image 'node:14-alpine' }
-            }
-            steps {
             	echo "Build Application"
                 sh 'mvn clean install -DskipTests'
             }
