@@ -3,9 +3,11 @@ pipeline {
     agent none
     stages {
         stage('build') {
-            docker {
-               dockerfile true
-               label 'docker'
+            agent {
+                docker {
+                    dockerfile true
+                    label 'docker'
+                }
             }
             steps {
             	echo "Build Application"
