@@ -1,19 +1,20 @@
 #!/usr/bin/env groovy
-
 pipeline {
-    agent { 
-    	docker { 
-    		image 'maven:3.3.3' 
-    	} 
-    }
+    agent none
     stages {
         stage('build') {
+            agent {
+                docker { image 'maven' }
+            }
             steps {
             	echo "Build Application"
                 sh 'mvn clean install -DskipTests'
             }
         }
         stage('test') {
+            agent {
+                docker { image 'maven' }
+            }
             steps {
             	echo "Run Test Application"
                 sh 'mvn test'
